@@ -1,0 +1,7 @@
+{
+   "resources": [
+        { "pattern": "\\Qdb/migration/V1.0__initial_schema.sql\\E" }, 
+        { "pattern": "\\Qlogback.xml\\E" }, 
+        { "pattern": "\\Qapplication.yml\\E" }
+   ]
+}

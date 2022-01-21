@@ -1,0 +1,13 @@
+mn.data.mysql.controllers.$AuthorController$Definition$Reference
+mn.data.mysql.services.$AuthorService$Definition$Reference
+mn.data.mysql.mappers.$AuthorMapper$Definition$Reference
+mn.data.mysql.dao.$BookDao$Definition$Reference
+mn.data.mysql.controllers.$AuthorController$Definition$Intercepted$Definition$Reference
+mn.data.mysql.mappers.$BookMapper$Definition$Reference
+mn.data.mysql.dao.$AuthorDao$Definition$Reference
+mn.data.mysql.exception.handler.$BaseExceptionHandler$Definition$Reference
+mn.data.mysql.repositories.$AuthorRepository$Intercepted$Definition$Reference
+mn.data.mysql.repositories.$BookRepository$Intercepted$Definition$Reference
+mn.data.mysql.controllers.$BookController$Definition$Intercepted$Definition$Reference
+mn.data.mysql.services.$BookService$Definition$Reference
+mn.data.mysql.controllers.$BookController$Definition$Reference

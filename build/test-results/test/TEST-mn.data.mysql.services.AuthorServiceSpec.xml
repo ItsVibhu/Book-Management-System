@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="mn.data.mysql.services.AuthorServiceSpec" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-01-19T19:27:22" hostname="BLRETV-C02FXBDF" time="0.024">
+  <properties/>
+  <testcase name="getAllAuthorsTest()" classname="mn.data.mysql.services.AuthorServiceSpec" time="0.019"/>
+  <testcase name="findAuthorTest()" classname="mn.data.mysql.services.AuthorServiceSpec" time="0.005"/>
+  <system-out><![CDATA[?[36m00:57:22.890?[0;39m ?[1;30m[Test worker]?[0;39m ?[34mINFO ?[0;39m ?[35mi.m.context.env.DefaultEnvironment?[0;39m - Established active environments: [test]
+?[36m00:57:22.911?[0;39m ?[1;30m[Test worker]?[0;39m ?[34mINFO ?[0;39m ?[35mcom.zaxxer.hikari.HikariDataSource?[0;39m - HikariPool-3 - Starting...
+?[36m00:57:22.915?[0;39m ?[1;30m[Test worker]?[0;39m ?[34mINFO ?[0;39m ?[35mcom.zaxxer.hikari.HikariDataSource?[0;39m - HikariPool-3 - Start completed.
+?[36m00:57:22.915?[0;39m ?[1;30m[Test worker]?[0;39m ?[34mINFO ?[0;39m ?[35mi.m.flyway.AbstractFlywayMigration?[0;39m - Running migrations for database with qualifier [default]
+?[36m00:57:22.916?[0;39m ?[1;30m[Test worker]?[0;39m ?[34mINFO ?[0;39m ?[35mo.f.c.i.license.VersionPrinter?[0;39m - Flyway Community Edition 7.15.0 by Redgate
+?[36m00:57:22.917?[0;39m ?[1;30m[Test worker]?[0;39m ?[34mINFO ?[0;39m ?[35mo.f.c.i.d.base.BaseDatabaseType?[0;39m - Database: jdbc:mysql://localhost/exampleDB (MySQL 5.7)
+?[36m00:57:22.923?[0;39m ?[1;30m[Test worker]?[0;39m ?[34mINFO ?[0;39m ?[35mo.f.core.internal.command.DbValidate?[0;39m - Successfully validated 1 migration (execution time 00:00.002s)
+?[36m00:57:22.926?[0;39m ?[1;30m[Test worker]?[0;39m ?[34mINFO ?[0;39m ?[35mo.f.core.internal.command.DbMigrate?[0;39m - Current version of schema `exampledb`: 1.0
+?[36m00:57:22.927?[0;39m ?[1;30m[Test worker]?[0;39m ?[34mINFO ?[0;39m ?[35mo.f.core.internal.command.DbMigrate?[0;39m - Schema `exampledb` is up to date. No migration necessary.
+?[36m00:57:22.940?[0;39m ?[1;30m[Test worker]?[0;39m ?[34mINFO ?[0;39m ?[35morg.hibernate.dialect.Dialect?[0;39m - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+?[36m00:57:23.042?[0;39m ?[1;30m[Test worker]?[0;39m ?[34mINFO ?[0;39m ?[35mcom.zaxxer.hikari.HikariDataSource?[0;39m - HikariPool-3 - Shutdown initiated...
+?[36m00:57:23.043?[0;39m ?[1;30m[Test worker]?[0;39m ?[34mINFO ?[0;39m ?[35mcom.zaxxer.hikari.HikariDataSource?[0;39m - HikariPool-3 - Shutdown completed.
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

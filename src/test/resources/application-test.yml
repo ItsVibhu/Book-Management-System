@@ -1,0 +1,28 @@
+micronaut:
+  server:
+    port: 8080
+  application:
+    name: mn-data-mysql
+
+jackson:
+  bean-introspection-module: true
+
+datasources:
+  default:
+    url: jdbc:mysql://localhost/exampleDB?generateSimpleParameterMetadata=true&zeroDateTimeBehavior=convertToNull&verifyServerCertificate=false&useSSL=false
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: root
+    password: ''
+---
+jpa:
+  default:
+    entity-scan:
+      packages: 'mn.data.mysql.domain'
+    properties:
+      hibernate:
+        bytecode:
+          provider: none
+        hbm2ddl:
+          auto: validate
+        show_sql: false
+

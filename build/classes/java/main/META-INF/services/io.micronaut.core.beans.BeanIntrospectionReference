@@ -1,0 +1,4 @@
+mn.data.mysql.dtos.$BookDto$IntrospectionRef
+mn.data.mysql.domain.$Book$IntrospectionRef
+mn.data.mysql.domain.$Author$IntrospectionRef
+mn.data.mysql.dtos.$AuthorDto$IntrospectionRef
