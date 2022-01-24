@@ -98,21 +98,13 @@ public class BookDao {
     }
 
     public Book updateBook(UpdateBookRequest updateBookRequest) {
-//               Optional<Book> byId = bookRepository.findById(updateBookRequest.getId());
         Book book = getBook(updateBookRequest.getId());
-        if(updateBookRequest.getTitle()!= null)
-            book.setTitle(updateBookRequest.getTitle());
-        if(updateBookRequest.getPubDate()!=null)
-            book.setPubDate(updateBookRequest.getPubDate());
-        if(updateBookRequest.getAuthor()!=null)
-            book.setAuthor(updateBookRequest.getAuthor());
-        if(updateBookRequest.getIsbn()!=null)
-            book.setIsbn(updateBookRequest.getIsbn());
-        if(updateBookRequest.getCategory()!=null)
-            book.setCategory(updateBookRequest.getCategory());
-        if(updateBookRequest.getSellPrice()!=null)
-            book.setSellPrice(updateBookRequest.getSellPrice());
-
+        Optional.ofNullable(updateBookRequest.getTitle()).ifPresent(book::setTitle);
+        Optional.ofNullable(updateBookRequest.getPubDate()).ifPresent(book::setPubDate);
+        Optional.ofNullable(updateBookRequest.getAuthor()).ifPresent(book::setAuthor);
+        Optional.ofNullable(updateBookRequest.getIsbn()).ifPresent(book::setIsbn);
+        Optional.ofNullable(updateBookRequest.getCategory()).ifPresent(book::setCategory);
+        Optional.ofNullable(updateBookRequest.getSellPrice()).ifPresent(book::setSellPrice);
         logger.info("Book Updated Successfully");
         return bookRepository.update(book);
     }

@@ -16,8 +16,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @ToString
-@Setter
-@Getter
 @AllArgsConstructor
 public class UpdateBookRequest {
 

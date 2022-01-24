@@ -16,7 +16,7 @@ public class BookDto {
     private String title;
     @NotNull
     @JsonFormat(pattern="yyyy-MM-dd")
-    private Date pubDate;//Todo Date
+    private java.sql.Date pubDate;
     @NotNull
     private String author;
     @NotNull

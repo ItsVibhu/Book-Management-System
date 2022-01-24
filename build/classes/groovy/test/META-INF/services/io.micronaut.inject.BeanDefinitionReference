@@ -1,8 +1,8 @@
 mn.data.mysql.test.services.$TestHelperService$Definition$Reference
 mn.data.mysql.controller.$AuthorControllerSpec$GetAuthorService0$Definition$Intercepted$Definition$Reference
 mn.data.mysql.dao.$BookDaoSpec$GetBookRepository0$Definition$Intercepted$Definition$Reference
-mn.data.mysql.services.$BookServiceSpec$GetBookDao0$Definition$Reference
 mn.data.mysql.controller.$AuthorControllerSpec$GetAuthorService0$Definition$Reference
+mn.data.mysql.services.$BookServiceSpec$GetBookDao0$Definition$Reference
 mn.data.mysql.dao.$BookDaoSpec$Definition$Reference
 mn.data.mysql.dao.$AuthorDaoSpec$Definition$Reference
 mn.data.mysql.dao.$AuthorDaoSpec$GetAuthorsRepository0$Definition$Reference

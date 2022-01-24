@@ -4,9 +4,6 @@ micronaut:
   application:
     name: mn-data-mysql
   router:
-    versioning:
-      enabled: true
-      default-version: 2
     static-resources:
       swagger:
         paths: classpath:META-INF/swagger

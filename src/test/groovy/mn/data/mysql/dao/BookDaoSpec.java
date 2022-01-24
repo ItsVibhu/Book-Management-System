@@ -6,6 +6,7 @@ import io.micronaut.test.annotation.MockBean;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import mn.data.mysql.domain.Author;
 import mn.data.mysql.domain.Book;
+import mn.data.mysql.enums.Category;
 import mn.data.mysql.repositories.BookRepository;
 import mn.data.mysql.test.TestHelper;
 import org.junit.jupiter.api.Assertions;
@@ -39,12 +40,13 @@ public class BookDaoSpec {
         return mock(BookRepository.class);
     }
 
+    Timestamp pubDate = new Timestamp(System.currentTimeMillis());
+
     @Test
     public void getAllBooksTest(){
-        String ts = "2018-09-02";
         Author author = TestHelper.createAuthor();
-        Book book1= TestHelper.createBook("Om Shanti",author, ts,"isbn","Thriller", 200.0F);
-        Book book2= TestHelper.createBook("Shanti",author, ts,"isbn","Thriller", 300.0F);
+        Book book1= TestHelper.createBook("Om Shanti",author, pubDate,"isbn",Category.THRILLER, 200.0F);
+        Book book2= TestHelper.createBook("Shanti",author, pubDate,"isbn",Category.THRILLER, 300.0F);
         Iterable<Book> books= Arrays.asList(book1,book2);
         when(bookRepository.findAll()).thenReturn(books);
         Iterable<Book> bookDtoList= bookRepository.findAll();
@@ -53,8 +55,7 @@ public class BookDaoSpec {
 
     @Test
     public void findByTitleTest(){
-        String ts = "2018-09-02";
-        Optional<Book> bookDto= Optional.ofNullable(TestHelper.createBook("Om Shanti",TestHelper.createAuthor(), ts, "isbn", "Thriller", 200.0F));
+        Optional<Book> bookDto= Optional.ofNullable(TestHelper.createBook("Om Shanti",TestHelper.createAuthor(), pubDate, "isbn", Category.THRILLER, 200.0F));
         when(bookRepository.findByTitle("Om Shanti")).thenReturn(bookDto);
         Optional<Book> bookDto1= bookRepository.findByTitle("Om Shanti");
         Assertions.assertEquals(bookDto,bookDto1);
@@ -62,8 +63,7 @@ public class BookDaoSpec {
 
     @Test
     public void findByIsbnTest(){
-        String ts = "2018-09-02";
-        Optional<Book> bookDto= Optional.ofNullable(TestHelper.createBook("Om Shanti", TestHelper.createAuthor(), ts, "isbn", "Thriller", 200.0F));
+        Optional<Book> bookDto= Optional.ofNullable(TestHelper.createBook("Om Shanti", TestHelper.createAuthor(), pubDate, "isbn", Category.THRILLER, 200.0F));
         when(bookRepository.findByIsbn("isbn")).thenReturn(bookDto);
         Optional<Book> bookDto1= bookRepository.findByIsbn("isbn");
         Assertions.assertEquals(bookDto,bookDto1);
@@ -71,30 +71,30 @@ public class BookDaoSpec {
 
     @Test
     public void findByCategoryTest(){
-        String ts = "2018-09-02";
-        Book book1= TestHelper.createBook("Om Shanti",TestHelper.createAuthor(), ts,"isbn","Thriller", 200.0F);
-        Book book2= TestHelper.createBook("Shanti",TestHelper.createAuthor(), ts,"isbn","Thriller", 300.0F);
+        Book book1= TestHelper.createBook("Om Shanti",TestHelper.createAuthor(), pubDate,"isbn",Category.THRILLER, 200.0F);
+        Book book2= TestHelper.createBook("Shanti",TestHelper.createAuthor(), pubDate,"isbn",Category.THRILLER, 300.0F);
         List<Book> books= Arrays.asList(book1,book2);
-        when(bookRepository.findByCategory("Thriller")).thenReturn(books);
-        List<Book> bookDto1= bookRepository.findByCategory("Thriller");
+        when(bookRepository.findByCategory(Category.THRILLER)).thenReturn(books);
+        List<Book> bookDto1= bookRepository.findByCategory(Category.THRILLER);
         Assertions.assertEquals(books,bookDto1);
         Assertions.assertEquals(2,bookDto1.size());
     }
 
     @Test
     public void findByPubDateTest(){
-        String ts = "2018-09-02";
-        Optional<Book> bookDto= Optional.ofNullable(TestHelper.createBook("Om Shanti", TestHelper.createAuthor(), ts, "isbn", "Thriller", 200.0F));
-        when(bookRepository.findByPubDate(ts)).thenReturn(bookDto);
-        Optional<Book> bookDto1= bookRepository.findByPubDate(ts);
-        Assertions.assertEquals(bookDto,bookDto1);
+        Author author = TestHelper.createAuthor("Vibhu");
+        Book book1= TestHelper.createBook("Om Shanti",author, pubDate,"isbn",Category.THRILLER, 200.0F);
+        Book book2= TestHelper.createBook("Shanti",author, pubDate,"isbn",Category.THRILLER, 230.0F);
+        List<Book> books= Arrays.asList(book1,book2);
+        when(bookRepository.findByPubDate(pubDate)).thenReturn(books);
+        List<Book> bookDto1= bookRepository.findByPubDate(pubDate);
+        Assertions.assertEquals(books,bookDto1);
     }
 
     @Test
     public void findBySellPriceTest(){
-        String ts = "2018-09-02";
-        Book book1= TestHelper.createBook("Om Shanti",TestHelper.createAuthor(), ts,"isbn","Thriller", 200.0F);
-        Book book2= TestHelper.createBook("Shanti",TestHelper.createAuthor(), ts,"isbn","Thriller", 230.0F);
+        Book book1= TestHelper.createBook("Om Shanti",TestHelper.createAuthor(), pubDate,"isbn",Category.THRILLER, 200.0F);
+        Book book2= TestHelper.createBook("Shanti",TestHelper.createAuthor(), pubDate,"isbn",Category.THRILLER, 230.0F);
         List<Book> books= Arrays.asList(book1,book2);
         when(bookRepository.findBySellPriceGreaterThanAndSellPriceLessThanEquals(200.0F,300.0F)).thenReturn(books);
         List<Book> bookDto1= bookRepository.findBySellPriceGreaterThanAndSellPriceLessThanEquals(200.0F,300.0F);
@@ -104,10 +104,9 @@ public class BookDaoSpec {
 
     @Test
     public void findAllByAuthorNameTest(){
-        String ts = "2018-09-02";
         Author author = TestHelper.createAuthor("Vibhu");
-        Book book1= TestHelper.createBook("Om Shanti",author, ts,"isbn","Thriller", 200.0F);
-        Book book2= TestHelper.createBook("Shanti",author, ts,"isbn","Thriller", 230.0F);
+        Book book1= TestHelper.createBook("Om Shanti",author, pubDate,"isbn",Category.THRILLER, 200.0F);
+        Book book2= TestHelper.createBook("Shanti",author, pubDate,"isbn",Category.THRILLER, 230.0F);
         List<Book> books= Arrays.asList(book1,book2);
         when(bookRepository.findAllByAuthor(author)).thenReturn(books);
         List<Book> bookDto1= bookRepository.findAllByAuthor(author);

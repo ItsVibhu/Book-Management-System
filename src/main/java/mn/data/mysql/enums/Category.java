@@ -1,5 +1,5 @@
 package mn.data.mysql.enums;
 
 public enum Category {
-    Fantasy,Adventure,Romance,Contemporary,Mystery,Biographies,Comics,Thriller,Horror,Paranormal,Fiction
+    FANTASY,ADVENTURE,ROMANCE,CONTEMPORARY,MYSTERY,BIOGRAPHIES,COMICS,THRILLER,HORROR,PARANORMAL,FICTION
 }

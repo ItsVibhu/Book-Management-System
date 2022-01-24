@@ -9,6 +9,12 @@ import mn.data.mysql.domain.Author
 import mn.data.mysql.domain.Book
 import mn.data.mysql.dtos.AuthorDto
 import mn.data.mysql.dtos.BookDto
+import mn.data.mysql.enums.Category
+
+import java.sql.Date
+import java.sql.Timestamp
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 
 import java.sql.Timestamp
 import java.time.Instant
@@ -17,7 +23,10 @@ import java.time.Instant
  * Creates plain objects without database generated fields
  */
 class TestHelper {
-
+    Timestamp pubDate = new Timestamp(System.currentTimeMillis());
+    String sDate1="1998-12-31";
+//    Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(sDate1);
+    java.sql.Date date1=(java.sql.Date) new SimpleDateFormat("yyyy-MM-dd").parse(sDate1);
     static Author createAuthor(String name = "Anonymous", Integer birthYear = 1982) {
         return new Author(name: name, birthYear: birthYear)
     }
@@ -26,12 +35,12 @@ class TestHelper {
         return new AuthorDto(name: name, birthYear: birthYear)
     }
     
-    static Book createBook(String title = "no title", Author author = createAuthor(), String pubDate = "2018-04-02", String isbn= "no isbn",String category= "no category", Float sellPrice= 200.0 ) {
-        return new Book(title: title, pubDate: pubDate, author: author, isbn: isbn, category: category, sellPrice: sellPrice)
+    static Book createBook(String title = "no title", Author author = createAuthor(), pubDate, String isbn= "no isbn",Category category, Float sellPrice= 200.0 ) {
+        return new Book(title: title, pubDate: pubDate, author: author, isbn: isbn, category: Category.THRILLER, sellPrice: sellPrice)
     }
 
-    static BookDto createBookDto(String title = "no title", String author = "no name", String pubDate = "2018-04-02", String isbn= "isbn", String category= "no category", Float sellPrice= 200.0 ) {
-        return new BookDto(title: title, pubDate: pubDate, author: author, isbn: isbn, category: category, sellPrice: sellPrice)
+    static BookDto createBookDto(String title = "no title", String author = "no name", date1, String isbn= "isbn",Category category, Float sellPrice= 200.0 ) {
+        return new BookDto(title: title, pubDate: date1, author: author, isbn: isbn, category: Category.THRILLER , sellPrice: sellPrice)
     }
 
     static <O> HttpResponse<O> requestWithoutException(HttpClient client, HttpRequest req, Argument<O> returnedType) {
